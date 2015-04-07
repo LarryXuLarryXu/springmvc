@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jetsly.webapp.persistence.UserMapper">
+
+  <resultMap id="UserMap" type="main.java.com.jetsly.webapp.domain.User">
+    <result column="userName" property="userName" />
+    <result column="passWord" property="passWord" />
+  </resultMap>
+
+  <select id="GetAll" resultMap="UserMap">
+    SELECT userName,passWord FROM user
+  </select>
+
+  <select id="findByUserName" parameterType="java.lang.String"  resultMap="UserMap" >
+    SELECT userName,passWord FROM user WHERE userName =#{userName}
+  </select>
+
+</mapper>
